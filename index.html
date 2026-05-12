@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王紫轩 | 个人主页</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #FF6B9D;
+      --primary-light: #FFA3C4;
+      --accent: #FF8A5C;
+      --accent-light: #FFB89A;
+      --bg: #FFF5F7;
+      --card: #FFFFFF;
+      --text: #2D2D3A;
+      --text-light: #6B6B80;
+      --gradient: linear-gradient(135deg, #FF6B9D 0%, #FF8A5C 100%);
+    }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== 导航栏 ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      box-shadow: 0 1px 20px rgba(108, 99, 255, 0.08);
+    }
+
+    nav .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    nav .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    nav .nav-links a:hover { color: var(--primary); }
+    nav .nav-links a:hover::after { width: 100%; }
+
+    /* ===== 主区域 ===== */
+    .hero {
+      margin-top: 60px;
+      padding: 64px 24px 48px;
+      text-align: center;
+      background: var(--gradient);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -10%;
+      width: 350px;
+      height: 350px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .tagline {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .contact-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .pill {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 16px;
+      border-radius: 50px;
+      color: #fff;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* ===== 内容区 ===== */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 48px 0 32px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 22px;
+      background: var(--gradient);
+      border-radius: 4px;
+    }
+
+    /* ===== 关于我 ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .about-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 2px 20px rgba(108, 99, 255, 0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .about-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(108, 99, 255, 0.12);
+    }
+
+    .about-card h3 {
+      font-size: 0.85rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .about-card p {
+      color: var(--text-light);
+      font-size: 0.92rem;
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .info-tag {
+      background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(0, 206, 201, 0.08));
+      padding: 5px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    /* ===== 经历时间线 ===== */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary-light), var(--accent-light));
+      border-radius: 2px;
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 24px;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 20px rgba(108, 99, 255, 0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .tl-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 6px 24px rgba(108, 99, 255, 0.1);
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 24px;
+      width: 10px;
+      height: 10px;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
+
+    .tl-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 4px 12px;
+      margin-bottom: 6px;
+    }
+
+    .tl-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .tl-header .tl-date {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .tl-header .tl-role {
+      grid-column: 1;
+      grid-row: 2;
+      justify-self: start;
+    }
+
+    .tl-header .tl-role {
+      font-size: 0.82rem;
+      color: #fff;
+      background: var(--gradient);
+      padding: 2px 12px;
+      border-radius: 50px;
+    }
+
+    .tl-header .tl-date {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    .tl-item p {
+      color: var(--text-light);
+      font-size: 0.88rem;
+      margin-top: 6px;
+    }
+
+    /* ===== 教育背景 ===== */
+    .edu-cards {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .edu-card {
+      flex: 1;
+      min-width: 200px;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 20px rgba(108, 99, 255, 0.06);
+      border-top: 3px solid;
+      border-image: var(--gradient) 1;
+      transition: transform 0.3s;
+    }
+
+    .edu-card:hover { transform: translateY(-3px); }
+
+    .edu-card h3 { font-size: 1rem; margin-bottom: 4px; }
+
+    .edu-card .edu-meta {
+      font-size: 0.84rem;
+      color: var(--text-light);
+    }
+
+    /* ===== 技能 ===== */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-chip {
+      background: var(--card);
+      border: 1.5px solid rgba(108, 99, 255, 0.15);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      color: var(--text);
+      box-shadow: 0 2px 10px rgba(108, 99, 255, 0.05);
+      transition: all 0.3s;
+    }
+
+    .skill-chip:hover {
+      background: var(--gradient);
+      color: #fff;
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+
+    /* ===== 页脚 ===== */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-light);
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(108, 99, 255, 0.1);
+      margin-top: 16px;
+    }
+
+    footer span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      nav .nav-links { gap: 16px; }
+      nav .nav-links a { font-size: 0.82rem; }
+      .tl-header { flex-direction: column; gap: 4px; }
+    }
+
+    /* ===== 滚动动画 ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo"></div>
+    <ul class="nav-links">
+      <li><a href="#about">关于我</a></li>
+      <li><a href="#education">教育背景</a></li>
+      <li><a href="#experience">工作经历</a></li>
+      <li><a href="#skills">技能特长</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 顶部 Hero -->
+<section class="hero">
+  <h1>👋 Hi，我是王紫轩</h1>
+  <p class="tagline">财务管理专业本科生，具备扎实的会计理论功底与多段实习实战经验，同时拥有教育领域的教学经历。乐于挑战、善于学习，期待在财务会计领域持续成长。</p>
+  <div class="contact-pills">
+    <span class="pill">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+      +86 153-7730-4387
+    </span>
+    <a href="mailto:1520978130@qq.com" class="pill" style="text-decoration: none; cursor: pointer;">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      1520978130@qq.com
+    </a>
+    <a href="https://www.amap.com/search?query=文华学院" target="_blank" class="pill" style="text-decoration: none; cursor: pointer;">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+      文华学院 · 本科
+    </a>
+  </div>
+</section>
+
+<!-- 关于我 -->
+<div class="container">
+  <section id="about">
+    <h2 class="section-title">关于我</h2>
+    <div class="about-grid">
+      <div class="about-card fade-up">
+        <h3>💡 个人简介</h3>
+        <p>我是一名财务管理专业的应届本科毕业生，对数字天生敏感，做事严谨踏实。在校期间系统学习了财务管理、税法、审计学等核心课程，并通过多段实习将理论落地。善于沟通协作，抗压能力强，能够高效处理多线程任务。</p>
+      </div>
+      <div class="about-card fade-up">
+        <h3>🎯 基本信息</h3>
+        <div class="info-row">
+          <span class="info-tag">📅 2001年11月</span>
+          <span class="info-tag">🏫 文华学院</span>
+          <span class="info-tag">📚 财务管理</span>
+          <span class="info-tag">🎓 本科学历</span>
+          <span class="info-tag">🏷️ 共青团员</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 教育背景 -->
+  <section id="education">
+    <h2 class="section-title">教育背景</h2>
+    <div class="edu-cards">
+      <div class="edu-card fade-up">
+        <h3>🎓 文华学院 · 本科</h3>
+        <p class="edu-meta">2023.09 – 2025.06 · 财务管理</p>
+        <p class="edu-meta" style="margin-top: 8px; font-size: 0.82rem;">核心课程：高级财务管理、管理会计、税法、投资学、审计学等</p>
+      </div>
+      <div class="edu-card fade-up">
+        <h3>📖 文华学院 · 大专</h3>
+        <p class="edu-meta">2020.10 – 2023.06 · 财务管理</p>
+        <p class="edu-meta" style="margin-top: 8px; font-size: 0.82rem;">在校期间担任校青协办公室成员，组织策划多场志愿活动</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工作经历 -->
+  <section id="experience">
+    <h2 class="section-title">工作经历</h2>
+    <div class="timeline">
+
+      <div class="tl-item fade-up">
+        <div class="tl-header">
+          <h3>思学乐教育</h3>
+          <span class="tl-role">小学数学老师</span>
+          <span class="tl-date">2025.07 – 2026.04</span>
+        </div>
+        <p>负责小学数学教学工作，独立完成作业批改与学情数据统计分析，建立学生学习档案。针对重难点进行针对性辅导，锻炼了出色的逻辑思维与表达沟通能力。</p>
+      </div>
+
+      <div class="tl-item fade-up">
+        <div class="tl-header">
+          <h3>东莞禾安鑫塑胶制品有限公司</h3>
+          <span class="tl-role">外贸业务员</span>
+          <span class="tl-date">2025.02 – 2025.04</span>
+        </div>
+        <p>运用 LinkedIn、Google 及海关数据开展市场调研与客户开发，独立完成报价单制作与成本利润核算。与海外客户保持良好的商务沟通，确保订单全流程高效推进。</p>
+      </div>
+
+      <div class="tl-item fade-up">
+        <div class="tl-header">
+          <h3>武汉金色世纪公司</h3>
+          <span class="tl-role">会计助理</span>
+          <span class="tl-date">2024.07 – 2024.08</span>
+        </div>
+        <p>独立负责发票开具与抄报税流程，审核发票真伪，确保税务合规准确率 100%。完成日常报销单据审核及会计凭证整理归档，协助财务主管处理基础账务。</p>
+      </div>
+
+      <div class="tl-item fade-up">
+        <div class="tl-header">
+          <h3>生命动力有限公司</h3>
+          <span class="tl-role">财务会计</span>
+          <span class="tl-date">2022.07 – 2022.09</span>
+        </div>
+        <p>协助核算公司账目，完成原始凭证审核与记账凭证填制，参与月度财务报表编制，积累了企业财务数据汇总与分析的实战经验。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 技能特长 -->
+  <section id="skills">
+    <h2 class="section-title">技能特长</h2>
+    <div class="skills-wrap fade-up">
+      <span class="skill-chip">💼 初级会计资格证</span>
+      <span class="skill-chip">📐 小学数学教师资格证</span>
+      <span class="skill-chip">🗣️ 普通话二级甲等</span>
+      <span class="skill-chip">📊 金蝶 / 用友财务软件</span>
+      <span class="skill-chip">📝 Word / Excel / PPT</span>
+      <span class="skill-chip">💰 税控开票系统</span>
+      <span class="skill-chip">📈 成本核算与利润分析</span>
+      <span class="skill-chip">🤝 团队协作与沟通</span>
+      <span class="skill-chip">🔍 严谨细致 · 抗压力强</span>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- 页脚 -->
+<footer>
+  <p>© 2026 <span>王紫轩</span> · 用心做好每一件事</p>
+</footer>
+
+<!-- 滚动动画脚本 -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
