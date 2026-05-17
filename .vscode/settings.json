@@ -1,0 +1,25 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "git add": true,
+        "git commit": true,
+        "git push": true,
+        "pip": true,
+        "Out-File": true,
+        "Test-Path": true,
+        "/^python -c \"\nfrom docx import Document\nfrom docx\\.shared import Pt, Cm, RGBColor\nfrom docx\\.enum\\.text import WD_ALIGN_PARAGRAPH\n\ndoc = Document\\(\\)\n\nfor section in doc\\.sections:\n    section\\.top_margin = Cm\\(2\\.54\\)\n    section\\.bottom_margin = Cm\\(2\\.54\\)\n    section\\.left_margin = Cm\\(3\\.17\\)\n    section\\.right_margin = Cm\\(3\\.17\\)\n\n# 标题\ntitle = doc\\.add_paragraph\\(\\)\ntitle\\.alignment = WD_ALIGN_PARAGRAPH\\.CENTER\nrun = title\\.add_run\\('面试自我介绍'\\)\nrun\\.bold = True\nrun\\.font\\.size = Pt\\(18\\)\nrun\\.font\\.name = '微软雅黑'\nrun\\.font\\.color\\.rgb = RGBColor\\(0x33, 0x33, 0x33\\)\n\n# 副标题\nsubtitle = doc\\.add_paragraph\\(\\)\nsubtitle\\.alignment = WD_ALIGN_PARAGRAPH\\.CENTER\nrun = subtitle\\.add_run\\('应聘岗位：会计  \\|  应聘公司：汽车进出口企业'\\)\nrun\\.font\\.size = Pt\\(11\\)\nrun\\.font\\.name = '微软雅黑'\nrun\\.font\\.color\\.rgb = RGBColor\\(0x66, 0x66, 0x66\\)\n\ndoc\\.add_paragraph\\(''\\)\n\nparagraphs_content = \\[\n    '面试官您好！',\n    '我叫王紫轩，文华学院财务管理专业本科毕业，拿到了初级会计资格证。很高兴有这次面试机会，来应聘咱们公司的会计岗位。',\n    '大学里我学的就是财务管理方向，像高级财务管理、管理会计、税法、审计学这些课程都有比较系统的学习。平时也一直在用金蝶、用友这些财务软件，税控开票系统也操作过，Excel 数据处理和报表制作这些日常工作也都比较熟练。',\n    '说到实际工作经验，我之前在武汉金色世纪公司做过会计助理，主要就是开发票、抄报税，还有审核报销单据、整理会计凭证这些。当时发票审核那块我做得比较细，税务合规这块没出过差错。再早一些，我在生命动力有限公司做过财务会计，跟着做账目核算、填记账凭证，也参与了月度报表的编制，算是把课本上学的东西真正在实际工作中用了一遍。',\n    '我觉得特别值得一提的是，我之前在东莞一家公司做过外贸业务员。虽然岗位不是财务，但工作中我一直在做报价单、算成本和利润，也接触到了海关数据和进出口业务的流程。这段经历让我对进出口贸易中的单据处理、成本核算都有了比较直观的了解。我觉得这一点对做汽车进出口的账务应该会有帮助，至少上手会更快一些。',\n    '性格方面呢，我这个人对数字比较敏感，做事喜欢仔细一点，不太容易出错。之前还做过一年的小学数学老师，所以沟通表达和抗压这块也还可以，习惯了同时处理好几件事情。',\n    '我是真的挺看好汽车进出口这个方向的，也觉得在小微企业能学到更多东西，接触面更广。虽然我经验还不算多，但我学东西很快，也愿意从基础做起，踏踏实实地把事情做好。',\n    '我的介绍就到这里，谢谢您！',\n\\]\n\nfor text in paragraphs_content:\n    p = doc\\.add_paragraph\\(\\)\n    p\\.paragraph_format\\.first_line_indent = Pt\\(22\\)\n    p\\.paragraph_format\\.line_spacing = 1\\.75\n    run = p\\.add_run\\(text\\)\n    run\\.font\\.size = Pt\\(12\\)\n    run\\.font\\.name = '微软雅黑'\n    run\\.font\\.color\\.rgb = RGBColor\\(0x33, 0x33, 0x33\\)\n\n# index adjusting for spacing paragraph\ndoc\\.paragraphs\\[3\\]\\.paragraph_format\\.first_line_indent = None\ndoc\\.paragraphs\\[-1\\]\\.paragraph_format\\.first_line_indent = None\n\ndoc\\.save\\(r'c:\\\\Users\\\\xun_f\\\\Desktop\\\\FirstProject\\\\自我介绍\\.docx'\\)\nprint\\('文件已保存'\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python -c \"\nfrom docx import Document\nfrom docx\\.shared import Pt, Cm, RGBColor\nfrom docx\\.enum\\.text import WD_ALIGN_PARAGRAPH\n\ndoc = Document\\(\\)\n\nfor section in doc\\.sections:\n    section\\.top_margin = Cm\\(2\\.54\\)\n    section\\.bottom_margin = Cm\\(2\\.54\\)\n    section\\.left_margin = Cm\\(3\\.17\\)\n    section\\.right_margin = Cm\\(3\\.17\\)\n\ntitle = doc\\.add_paragraph\\(\\)\ntitle\\.alignment = WD_ALIGN_PARAGRAPH\\.CENTER\nrun = title\\.add_run\\('面试自我介绍'\\)\nrun\\.bold = True\nrun\\.font\\.size = Pt\\(18\\)\nrun\\.font\\.name = '微软雅黑'\nrun\\.font\\.color\\.rgb = RGBColor\\(0x33, 0x33, 0x33\\)\n\nsubtitle = doc\\.add_paragraph\\(\\)\nsubtitle\\.alignment = WD_ALIGN_PARAGRAPH\\.CENTER\nrun = subtitle\\.add_run\\('应聘岗位：会计  \\|  应聘公司：汽车进出口企业'\\)\nrun\\.font\\.size = Pt\\(11\\)\nrun\\.font\\.name = '微软雅黑'\nrun\\.font\\.color\\.rgb = RGBColor\\(0x66, 0x66, 0x66\\)\n\ndoc\\.add_paragraph\\(''\\)\n\nparagraphs_content = \\[\n    '面试官您好！',\n    '我叫王紫轩，文华学院财务管理专业本科毕业，持有初级会计资格证。大学期间系统学习了财务管理、税法、审计学等课程，能熟练使用金蝶、用友财务软件 and 税控开票系统。',\n    '实习期间，我在武汉金色世纪公司做过会计助理，负责开票、抄报税和凭证整理；也在生命动力公司参与过账目核算和月度报表编制，有实际的账务处理经验。另外，我还做过外贸业务员，接触过进出口业务中的成本核算和单据处理，这对贵公司的汽车进出口账务应该能比较快上手。',\n    '我做事细心、对数字敏感，学习能力强，愿意踏实从基础做起。希望能有机会加入贵公司，谢谢！',\n\\]\n\nfor text in paragraphs_content:\n    p = doc\\.add_paragraph\\(\\)\n    p\\.paragraph_format\\.first_line_indent = Pt\\(22\\)\n    p\\.paragraph_format\\.line_spacing = 1\\.75\n    run = p\\.add_run\\(text\\)\n    run\\.font\\.size = Pt\\(12\\)\n    run\\.font\\.name = '微软雅黑'\n    run\\.font\\.color\\.rgb = RGBColor\\(0x33, 0x33, 0x33\\)\n\ndoc\\.paragraphs\\[3\\]\\.paragraph_format\\.first_line_indent = None\ndoc\\.paragraphs\\[-1\\]\\.paragraph_format\\.first_line_indent = None\n\ntotal = sum\\(len\\(t\\) for t in paragraphs_content\\)\nprint\\(f'总字数：\\{total\\}'\\)\n\ndoc\\.save\\(r'c:\\\\Users\\\\xun_f\\\\Desktop\\\\FirstProject\\\\自我介绍\\.docx'\\)\nprint\\('文件已保存'\\)\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "ping": true,
+        "git config": true,
+        "git -c http.proxy=http://127.0.0.1:7890": true,
+        "/^python -m pip install python-docx$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
